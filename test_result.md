@@ -178,3 +178,92 @@ agent_communication:
     -comment: "Please test the two new endpoints: POST /api/contact (fields: name, email, phone optional, message; must validate email + reject empty required) and POST /api/newsletter (email; must be idempotent for duplicate emails). Also GET listing endpoints. Use REACT_APP_BACKEND_URL from /app/frontend/.env with /api prefix."
     -agent: "testing"
     -comment: "✅ BACKEND TESTING COMPLETE - ALL TESTS PASSED (11/11). Both endpoints working perfectly: POST /api/contact validates all fields correctly (name, email, message required; phone optional), returns proper 201/422 responses, stores in MongoDB contacts collection. POST /api/newsletter is fully idempotent (duplicate emails return same id/timestamp), validates email format, stores in subscribers collection. Both GET endpoints return sorted lists without exposing MongoDB _id. No issues found."
+
+# ============ Update: Admin Dashboard (JWT) ============
+backend:
+  - task: "POST /api/admin/login - JWT login"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        -working: "NA"
+        -agent: "main"
+        -comment: "New endpoint. Default seed admin username=admin password=BangaliCoimbatore@2026 (bcrypt hashed in admin_users collection on startup). Returns JWT bearer token (HS256, 24h)."
+        -working: true
+        -agent: "testing"
+        -comment: "✅ ALL TESTS PASSED (4/4). Verified: (1) Valid credentials (username=admin, password=BangaliCoimbatore@2026) return 200 with access_token, token_type='bearer', username='admin', expires_hours=24; (2) Wrong password returns 401 with detail message; (3) Unknown username returns 401; (4) Missing password field returns 422 validation error. JWT token generation working correctly."
+  - task: "GET /api/admin/me and /api/admin/stats - Protected"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        -working: "NA"
+        -agent: "main"
+        -comment: "Require Bearer JWT; return user info and totals (inquiries, pending, handled, subscribers)."
+        -working: true
+        -agent: "testing"
+        -comment: "✅ ALL TESTS PASSED (5/5). Verified: (1) GET /api/admin/me without token returns 401; (2) Invalid token returns 401; (3) Valid token returns 200 with username='admin' and role='admin'; (4) GET /api/admin/stats without token returns 401; (5) Valid token returns 200 with all required integer fields: total_inquiries, pending_inquiries, handled_inquiries, total_subscribers. JWT authentication working correctly on both endpoints."
+  - task: "GET /api/contact and /api/newsletter now JWT-protected"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        -working: "NA"
+        -agent: "main"
+        -comment: "Previously public; now require admin JWT. POST endpoints remain public."
+        -working: true
+        -agent: "testing"
+        -comment: "✅ ALL TESTS PASSED (4/4). Verified: (1) GET /api/contact without token returns 401 (protected); (2) GET /api/contact with valid token returns 200 with list of contacts including handled field, sorted by most recent first; (3) GET /api/newsletter without token returns 401 (protected); (4) GET /api/newsletter with valid token returns 200 with list of subscribers. Both GET endpoints correctly protected while POST endpoints remain public."
+  - task: "PATCH /api/contact/{id} - Mark handled"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        -working: "NA"
+        -agent: "main"
+        -comment: "Updates handled=true/false. Requires JWT. Contact model now includes handled bool default False."
+        -working: true
+        -agent: "testing"
+        -comment: "✅ ALL TESTS PASSED (4/4). Verified: (1) PATCH without token returns 401; (2) PATCH with valid token and body {handled: true} returns 200 with handled=true; (3) PATCH again with {handled: false} returns 200 with handled=false (toggle works); (4) PATCH with non-existent ID returns 404 with 'Inquiry not found' detail; (5) Stats correctly update after marking handled - pending_inquiries decrements by 1, handled_inquiries increments by 1. Full CRUD cycle working correctly."
+
+frontend:
+  - task: "Admin routes /admin and /admin/login with JWT auth"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/Admin.jsx, /app/frontend/src/pages/AdminLogin.jsx, /app/frontend/src/context/AuthContext.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        -working: "NA"
+        -agent: "main"
+        -comment: "AuthProvider stores token in localStorage, verifies via /api/admin/me. Dashboard shows stats, inquiries with mark-handled toggle, subscribers list, search + filter."
+
+metadata:
+  version: "1.3"
+  test_sequence: 3
+  run_ui: false
+
+test_plan:
+  current_focus: []
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+    -agent: "main"
+    -comment: "Please test the admin endpoints. Default credentials: username=admin password=BangaliCoimbatore@2026. Verify: (1) login returns access_token, (2) wrong password returns 401, (3) /api/contact and /api/newsletter GET now require Bearer token (401 without), (4) PATCH /api/contact/{id} toggles handled and requires auth, (5) /api/admin/stats returns correct counts."
+    -agent: "testing"
+    -comment: "✅ BACKEND TESTING COMPLETE - ALL ADMIN/AUTH TESTS PASSED (26/26 total). Admin authentication fully functional: (1) POST /api/admin/login correctly validates credentials (admin/BangaliCoimbatore@2026), returns JWT token with proper structure, rejects wrong password/unknown username with 401, validates required fields with 422; (2) GET /api/admin/me requires Bearer token, returns username and role correctly; (3) GET /api/admin/stats requires token, returns all counts (total_inquiries, pending_inquiries, handled_inquiries, total_subscribers) as integers; (4) GET /api/contact and /api/newsletter now properly protected (401 without token, 200 with valid token); (5) PATCH /api/contact/{id} requires token, toggles handled field correctly, returns 404 for non-existent IDs, stats update correctly after marking handled. Public POST endpoints (/api/contact, /api/newsletter) remain accessible without auth. No issues found - all backend functionality working as expected."
