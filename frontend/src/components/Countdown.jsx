@@ -39,9 +39,9 @@ const Countdown = () => {
                 {left.done ? 'Happening Now' : 'Countdown to'}
               </div>
               <h3 className="font-display text-3xl md:text-4xl font-bold text-[#2a1810] leading-tight">
-                Durga Puja <span className="text-crimson-gradient italic">2025</span>
+                Durga Puja <span className="text-crimson-gradient italic">2026</span>
               </h3>
-              <p className="text-sm text-[#2a1810]/60 mt-2">Sep 29 — Oct 02 · SNV Kalyana Mandapam</p>
+              <p className="text-sm text-[#2a1810]/60 mt-2">Oct 16 — Oct 25 · 25th Year · SNV Kalyana Mandapam</p>
             </div>
 
             <div className="grid grid-cols-4 gap-3 md:gap-5">

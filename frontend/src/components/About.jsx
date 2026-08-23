@@ -14,7 +14,7 @@ const About = () => {
               <img
                 src="https://images.unsplash.com/photo-1634066844026-40a34d6f36c0?w=900&q=80"
                 alt="Durga Puja"
-                className="w-full h-[560px] object-cover"
+                className="w-full h-[600px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1a0f0a]/40 to-transparent" />
             </div>
@@ -38,7 +38,7 @@ const About = () => {
             </div>
 
             {/* Corner ornament */}
-            <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full border-2 border-dashed border-[#c8862a]/40 animate-spin-slow" style={{ animation: 'spin 20s linear infinite' }} />
+            <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full border-2 border-dashed border-[#c8862a]/40" style={{ animation: 'spin 20s linear infinite' }} />
           </div>
 
           {/* Right — content */}
@@ -46,15 +46,21 @@ const About = () => {
             <div className="text-[11px] uppercase tracking-[0.4em] color-gold font-bold mb-4">
               About Us
             </div>
-            <h2 className="font-display text-4xl md:text-6xl font-bold text-[#2a1810] leading-tight mb-6">
-              Where <span className="italic text-crimson-gradient">tradition</span> is nurtured, and <span className="italic text-crimson-gradient">culture</span> is cherished.
+            <h2 className="font-display text-4xl md:text-6xl font-bold text-[#2a1810] leading-[1.05] mb-6">
+              Where <span className="italic text-crimson-gradient">Bengal</span> lives on, in the heart of the <span className="italic text-crimson-gradient">south.</span>
             </h2>
             <div className="space-y-4 text-[#2a1810]/75 leading-relaxed font-serif-2 text-lg">
               <p>
-                The Bengali Association — Coimbatore is an umbrella of all those who love the land and culture of Bengal. From various parts of the country and different walks of life, we gather with modest means but boundless ambition.
+                The Bengali Association, Coimbatore, was <span className="font-semibold color-crimson">established in 2002</span> with the objective of bringing together Bengalis residing in Coimbatore — providing a platform to celebrate and preserve our rich Bengali culture, traditions, heritage and the values of Bengal.
               </p>
               <p>
-                Today, under the leadership of <span className="font-semibold color-crimson">Mr. Ayan Chatterjee</span> (President) and <span className="font-semibold color-crimson">Mr. Sankar Samanta</span> (Secretary), the association proudly celebrates its <span className="font-semibold">24th year of Durga Puja</span> — a testament to cultural unity, devotion, and community spirit.
+                Over the years, the Association has grown into a close-knit community — a place for members and families to celebrate Bengali festivals, cultural events, literature, music, art and social activities — while fostering friendship, unity and a strong sense of community.
+              </p>
+              <p>
+                We embrace the spirit of <span className="font-semibold">unity, inclusiveness and cultural harmony</span>, contributing to the vibrant multicultural fabric of Coimbatore.
+              </p>
+              <p className="italic color-crimson">
+                Our vision: to keep the essence of Bengal alive, while building lasting relationships and celebrating the spirit of community.
               </p>
             </div>
 
@@ -84,8 +90,8 @@ const About = () => {
               <div className="flex items-center gap-2 text-sm text-[#2a1810]/70">
                 <MapPin size={16} className="color-gold" /> Coimbatore, Tamilnadu
               </div>
-              <a href="#events" className="inline-flex items-center gap-2 text-sm font-semibold color-crimson link-under">
-                Read Our Story <ArrowRight size={14} />
+              <a href="#pillars" className="inline-flex items-center gap-2 text-sm font-semibold color-crimson link-under">
+                Our Four Pillars <ArrowRight size={14} />
               </a>
             </div>
           </div>

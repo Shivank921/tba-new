@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Countdown from '../components/Countdown';
 import About from '../components/About';
+import Pillars from '../components/Pillars';
 import Heritage from '../components/Heritage';
 import Events from '../components/Events';
 import Gallery from '../components/Gallery';
@@ -19,6 +20,7 @@ const Home = () => {
         <Hero />
         <Countdown />
         <About />
+        <Pillars />
         <Heritage />
         <Events />
         <Gallery />

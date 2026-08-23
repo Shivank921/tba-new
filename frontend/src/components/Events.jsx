@@ -32,7 +32,7 @@ const Events = () => {
 
           <div className="flex items-center gap-2 text-sm text-[#2a1810]/70">
             <CalIcon size={16} className="color-crimson" />
-            <span>September 29 — October 6, 2025</span>
+            <span>October 16 — October 25, 2026 · 25th Year</span>
           </div>
         </div>
 
@@ -112,9 +112,9 @@ const Events = () => {
                       key={idx}
                       className="group relative flex items-start gap-5 p-5 rounded-2xl border border-[#c8862a]/25 bg-[#fef6e4]/5 hover:bg-[#fef6e4]/10 transition-colors"
                     >
-                      <div className="shrink-0 flex flex-col items-center gap-1 min-w-[80px]">
+                      <div className="shrink-0 flex flex-col items-start gap-1 min-w-[140px]">
                         <Clock size={14} className="color-gold" />
-                        <div className="font-display text-lg font-bold text-[#f5c76a] tabular-nums">
+                        <div className="font-display text-base font-bold text-[#f5c76a] tabular-nums leading-tight">
                           {s.time}
                         </div>
                       </div>

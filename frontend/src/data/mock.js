@@ -7,89 +7,132 @@ export const heroSlides = [
     kicker: 'Est. 2002 · Regd. No. 189/2002',
     title: 'The Bengali Association',
     accent: 'Coimbatore',
-    subtitle: 'Celebrating 24 years of Durga Puja — where tradition breathes, and culture blooms in the heart of the south.',
-    cta: { label: 'Explore Durga Puja 2025', href: '#events' },
+    subtitle: 'A close-knit community celebrating Bengali culture, traditions, heritage and the values of Bengal in the heart of the south.',
+    cta: { label: 'Explore Durga Puja 2026', href: '#events' },
   },
   {
     id: 2,
     image: 'https://images.unsplash.com/photo-1617875216004-78f15839c578?w=1920&q=80',
-    kicker: 'Durga Puja 2025',
-    title: 'Aashche Bochor',
-    accent: 'Aabar Hobe',
-    subtitle: 'Join us at SNV Kalyana Mandapam, Ramnagar — for five days of devotion, dance, and delightful bhog.',
+    kicker: 'Our Spirit',
+    title: 'Keeping the Spirit of',
+    accent: 'Bengal Alive',
+    subtitle: 'From Durga Puja to Saraswati Puja, from Rabindra Sangeet to community service — we live Bengal, everyday.',
     cta: { label: 'View Puja Schedule', href: '#events' },
   },
   {
     id: 3,
     image: 'https://images.unsplash.com/photo-1645264090488-a019de493023?w=1920&q=80',
-    kicker: 'Community · Culture · Continuity',
+    kicker: 'আমাদের গর্ব',
+    title: 'Banglar Maati,',
+    accent: 'Banglar Sanskriti',
+    subtitle: 'Amader Garba — the soil of Bengal, the culture of Bengal, our pride. Carried forward with love in Coimbatore.',
+    cta: { label: 'Discover Our Heritage', href: '#heritage' },
+  },
+  {
+    id: 4,
+    image: 'https://images.unsplash.com/photo-1774437563786-d40a1087f31e?w=1920&q=80',
+    kicker: 'Join The Family',
     title: 'Become a',
     accent: 'Member',
-    subtitle: 'Preserve the essence of Bengal — through music, dance, literature, and shared traditions passed on with love.',
-    cta: { label: 'Join the Family', href: '#membership' },
+    subtitle: 'Be part of a vibrant community that celebrates festivals, fosters friendship, and preserves the timeless traditions of Bengal.',
+    cta: { label: 'Become a Member', href: '#membership' },
   },
 ];
 
 export const stats = [
-  { value: '24', suffix: 'th', label: 'Year of Durga Puja' },
+  { value: '25', suffix: 'th', label: 'Year of Durga Puja' },
   { value: '500', suffix: '+', label: 'Active Members' },
   { value: '2002', suffix: '', label: 'Established' },
   { value: '15', suffix: '+', label: 'Annual Events' },
 ];
 
+// Durga Puja 2026 schedule with detailed timings
 export const events = [
   {
     id: 1,
-    date: 'Sep 29',
-    day: 'Monday',
-    title: 'Maha Saptami',
+    date: 'Oct 16',
+    day: 'Friday',
+    title: 'Maha Shashti',
     sessions: [
-      { time: '11:30 AM', name: 'Quiz Competition', note: 'No age limit' },
-      { time: '7:00 PM', name: 'Cultural Function', note: 'Open stage' },
+      { time: '9:28 AM – 3:43 PM', name: 'Shashti Puja', note: 'Bodhon of Devi Durga' },
+      { time: '7:00 PM', name: 'Cultural Function', note: 'Opening evening' },
     ],
     accent: 'saffron',
   },
   {
     id: 2,
-    date: 'Sep 30',
-    day: 'Tuesday',
-    title: 'Maha Ashtami',
+    date: 'Oct 17',
+    day: 'Saturday',
+    title: 'Maha Saptami',
     sessions: [
-      { time: '11:30 AM', name: 'Drawing Competition', note: 'On-spot theme, open to all' },
-      { time: '7:00 PM', name: 'Cultural Function', note: 'Music & Dance' },
+      { time: '9:29 AM', name: 'Saptami Puja', note: 'Kola Bou snan & sthapan' },
+      { time: '12:00 PM', name: 'Pushpanjali', note: 'Floral offering' },
+      { time: '12:30 PM', name: 'Bhog Arati', note: 'Community bhog' },
+      { time: '8:00 PM', name: 'Sandhya Arati', note: 'Evening arati & cultural night' },
     ],
     accent: 'crimson',
   },
   {
     id: 3,
-    date: 'Oct 01',
-    day: 'Wednesday',
-    title: 'Maha Nabami',
+    date: 'Oct 18',
+    day: 'Sunday',
+    title: 'Saptami · Day 2',
     sessions: [
-      { time: '11:30 AM', name: 'Dhunuchi Nritya', note: 'Adults only' },
-      { time: '7:00 PM', name: 'Cultural Function', note: 'Grand evening' },
+      { time: '12:00 PM', name: 'Pushpanjali', note: 'Floral offering' },
+      { time: '12:30 PM', name: 'Bhog Arati', note: 'Community bhog' },
+      { time: '8:00 PM', name: 'Sandhya Arati', note: 'Cultural function' },
     ],
     accent: 'gold',
   },
   {
     id: 4,
-    date: 'Oct 02',
-    day: 'Thursday',
-    title: 'Vijaya Dashami',
+    date: 'Oct 19',
+    day: 'Monday',
+    title: 'Maha Ashtami',
     sessions: [
-      { time: '8:00 PM', name: 'Prize Distribution', note: 'Sindoor khela & farewell' },
+      { time: '5:43 AM – 10:00 AM', name: 'Ashtami Puja', note: 'Main morning puja' },
+      { time: '7:26 AM', name: 'Sandhi Puja', note: 'The most sacred moment' },
+      { time: '8:14 AM', name: 'Bhog Arati', note: 'Morning bhog' },
+      { time: '8:00 PM', name: 'Sandhya Arati', note: 'Cultural evening' },
     ],
     accent: 'terracotta',
   },
   {
     id: 5,
-    date: 'Oct 06',
-    day: 'Monday',
-    title: 'Mahalakshmi Puja',
+    date: 'Oct 20',
+    day: 'Tuesday',
+    title: 'Maha Nabami',
     sessions: [
-      { time: 'All Day', name: 'Puja & Bhog', note: 'Community gathering' },
+      { time: '5:40 AM – 9:31 AM', name: 'Nabami Puja', note: 'Morning rituals' },
+      { time: '10:00 AM', name: 'Pushpanjali', note: 'Floral offering' },
+      { time: '11:00 AM', name: 'Bhog Arati', note: 'Community bhog' },
+      { time: '8:00 PM', name: 'Sandhya Arati', note: 'Dhunuchi Nritya & finale' },
     ],
     accent: 'saffron',
+  },
+  {
+    id: 6,
+    date: 'Oct 21',
+    day: 'Wednesday',
+    title: 'Maha Dashami',
+    sessions: [
+      { time: '9:30 AM – 10:47 AM', name: 'Dashami Puja', note: 'Concluding rituals' },
+      { time: '11:00 AM', name: 'Arati', note: 'Farewell arati' },
+      { time: '11:30 AM', name: 'Devi Baran', note: 'Sindoor khela & vijaya' },
+    ],
+    accent: 'crimson',
+  },
+  {
+    id: 7,
+    date: 'Oct 25',
+    day: 'Sunday',
+    title: 'Mahalakshmi Puja',
+    sessions: [
+      { time: '7:00 PM – 10:00 PM', name: 'Lakshmi Puja', note: 'Evening rituals' },
+      { time: '9:30 PM', name: 'Pushpanjali', note: 'Floral offering' },
+      { time: '10:00 PM', name: 'Arati', note: 'Concluding arati' },
+    ],
+    accent: 'gold',
   },
 ];
 
@@ -133,15 +176,66 @@ export const committee = [
   { name: 'Mr. Purushottam Purohit', role: 'Senior Advisor', tenure: 'Guiding' },
 ];
 
+// The Four Pillars of The Bengali Association Coimbatore
+export const pillars = [
+  {
+    id: 1,
+    number: '01',
+    title: 'Durga Puja Celebration',
+    tagline: 'The heart of our year',
+    description: 'Durga Puja is the most cherished and eagerly awaited celebration of the Bengali Association, Coimbatore. Members and families come together with devotion, enthusiasm, and the traditional spirit of Bengal — through Maha Shashti, Saptami, Ashtami, Navami and Bijoya Dashami, with pujas, cultural programmes, devotional music, dance and community feasts.',
+    quote: 'Pujo means togetherness — celebrating Maa Durga, celebrating Bengal, and celebrating our community.',
+    icon: 'Flame',
+    image: 'https://images.unsplash.com/photo-1616074385287-67f6fb9e9eb8?w=900&q=80',
+  },
+  {
+    id: 2,
+    number: '02',
+    title: 'Community Services',
+    tagline: 'Compassion in action',
+    description: 'Beyond cultural activities, the Association believes in community, compassion and mutual support. Through Blood Donation Camps, Free Eye Checkup camps, Health Checkup drives and Annadanam, we promote social responsibility, volunteerism and collective welfare — supporting one another during times of need.',
+    quote: 'Service is the truest form of prayer.',
+    icon: 'HeartHandshake',
+    image: 'https://images.unsplash.com/photo-1774437563786-d40a1087f31e?w=900&q=80',
+  },
+  {
+    id: 3,
+    number: '03',
+    title: 'Spreading Cultural Awareness',
+    tagline: 'Roots for the next generation',
+    description: 'We are committed to preserving, promoting and spreading awareness of Bengali culture and heritage. A special focus is placed on the younger generation — encouraging them to understand their roots and carry forward the language, traditions, values and cultural heritage of Bengal.',
+    quote: 'A culture lives when its children remember it.',
+    icon: 'Sparkles',
+    image: 'https://images.unsplash.com/photo-1585302397841-b42e837d0d81?w=900&q=80',
+  },
+  {
+    id: 4,
+    number: '04',
+    title: 'Cultural Events & Get-Togethers',
+    tagline: 'A year full of joy',
+    description: 'From Durga Puja and Saraswati Puja to Kali Puja, annual picnics and traditional Bengali festivities — our year is stitched together with joy, friendship and togetherness. These occasions showcase our talents and pass our traditions to the next generation.',
+    quote: 'Every gathering is a small festival of belonging.',
+    icon: 'Users',
+    image: 'https://images.unsplash.com/photo-1759738102510-ec524f666274?w=900&q=80',
+  },
+];
+
+// Gallery categories: Puja, Community Services, Events, Media and Recognitions
+export const galleryCategories = ['All', 'Puja', 'Community Services', 'Events', 'Media & Recognitions'];
+
 export const gallery = [
-  { id: 1, src: 'https://images.unsplash.com/photo-1616074385287-67f6fb9e9eb8?w=800&q=80', tag: 'Puja', span: 'row-span-2' },
-  { id: 2, src: 'https://images.unsplash.com/photo-1645264090488-a019de493023?w=800&q=80', tag: 'Dance', span: '' },
-  { id: 3, src: 'https://images.unsplash.com/photo-1585302397841-b42e837d0d81?w=800&q=80', tag: 'Performance', span: '' },
-  { id: 4, src: 'https://images.unsplash.com/photo-1774437563786-d40a1087f31e?w=800&q=80', tag: 'Community', span: 'row-span-2' },
-  { id: 5, src: 'https://images.unsplash.com/photo-1634066844026-40a34d6f36c0?w=800&q=80', tag: 'Devi', span: '' },
-  { id: 6, src: 'https://images.unsplash.com/photo-1585607344893-43a4bd91169a?w=800&q=80', tag: 'Rituals', span: '' },
-  { id: 7, src: 'https://images.unsplash.com/photo-1759738102510-ec524f666274?w=800&q=80', tag: 'Gathering', span: '' },
-  { id: 8, src: 'https://images.unsplash.com/photo-1600867161364-67e000733952?w=800&q=80', tag: 'Idol', span: '' },
+  { id: 1, src: 'https://images.unsplash.com/photo-1616074385287-67f6fb9e9eb8?w=800&q=80', tag: 'Puja', title: 'Devi Darshan', span: 'row-span-2' },
+  { id: 2, src: 'https://images.unsplash.com/photo-1645264090488-a019de493023?w=800&q=80', tag: 'Events', title: 'Dhunuchi Nritya', span: '' },
+  { id: 3, src: 'https://images.unsplash.com/photo-1585302397841-b42e837d0d81?w=800&q=80', tag: 'Events', title: 'Cultural Night', span: '' },
+  { id: 4, src: 'https://images.unsplash.com/photo-1774437563786-d40a1087f31e?w=800&q=80', tag: 'Community Services', title: 'Annadanam Drive', span: 'row-span-2' },
+  { id: 5, src: 'https://images.unsplash.com/photo-1634066844026-40a34d6f36c0?w=800&q=80', tag: 'Puja', title: 'Maa Durga', span: '' },
+  { id: 6, src: 'https://images.unsplash.com/photo-1585607344893-43a4bd91169a?w=800&q=80', tag: 'Puja', title: 'Sandhi Puja', span: '' },
+  { id: 7, src: 'https://images.unsplash.com/photo-1759738102510-ec524f666274?w=800&q=80', tag: 'Events', title: 'Community Feast', span: '' },
+  { id: 8, src: 'https://images.unsplash.com/photo-1600867161364-67e000733952?w=800&q=80', tag: 'Media & Recognitions', title: 'In the Press', span: '' },
+  { id: 9, src: 'https://images.unsplash.com/photo-1617875216004-78f15839c578?w=800&q=80', tag: 'Puja', title: 'Pandal View', span: '' },
+  { id: 10, src: 'https://images.unsplash.com/photo-1468234847176-28606331216a?w=800&q=80', tag: 'Community Services', title: 'Health Camp', span: '' },
+  { id: 11, src: 'https://images.unsplash.com/photo-1605292356183-a77d0a9c9d1d?w=800&q=80', tag: 'Media & Recognitions', title: 'Award Ceremony', span: '' },
+  { id: 12, src: 'https://images.unsplash.com/photo-1771507057886-defc3e54aa8c?w=800&q=80', tag: 'Events', title: 'Saraswati Puja', span: '' },
 ];
 
 export const heritageCards = [
@@ -192,7 +286,7 @@ export const testimonials = [
     id: 3,
     name: 'Rupsa Mukherjee',
     role: 'Volunteer',
-    text: 'From cultural functions to the sindoor khela — the memories we create here are what our children will carry forward.',
+    text: 'From cultural functions to sindoor khela — the memories we create here are what our children will carry forward.',
   },
 ];
 
@@ -211,12 +305,13 @@ export const contact = {
 export const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
+  { label: 'Pillars', href: '#pillars' },
   { label: 'Heritage', href: '#heritage' },
-  { label: 'Events', href: '#events' },
+  { label: 'Schedule', href: '#events' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Committee', href: '#committee' },
   { label: 'Contact', href: '#contact' },
 ];
 
-// Countdown target — Durga Puja 2025 (Maha Saptami)
-export const pujaDate = '2026-10-17T11:30:00';
+// Countdown target — Durga Puja 2026 Maha Saptami (Oct 17, 2026)
+export const pujaDate = '2026-10-17T09:29:00';
