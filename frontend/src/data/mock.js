@@ -306,7 +306,6 @@ export const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Pillars', href: '#pillars' },
-  { label: 'Heritage', href: '#heritage' },
   { label: 'Schedule', href: '#events' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Committee', href: '#committee' },

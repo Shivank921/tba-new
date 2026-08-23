@@ -4,7 +4,6 @@ import Hero from '../components/Hero';
 import Countdown from '../components/Countdown';
 import About from '../components/About';
 import Pillars from '../components/Pillars';
-import Heritage from '../components/Heritage';
 import Events from '../components/Events';
 import Gallery from '../components/Gallery';
 import Luminaries from '../components/Luminaries';
@@ -21,7 +20,6 @@ const Home = () => {
         <Countdown />
         <About />
         <Pillars />
-        <Heritage />
         <Events />
         <Gallery />
         <Luminaries />
