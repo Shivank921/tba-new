@@ -101,3 +101,80 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+user_problem_statement: |
+  Add backend integration for the Bengali Association Coimbatore website:
+  1. Contact form submissions -> POST /api/contact and stored in MongoDB
+  2. Newsletter subscription -> POST /api/newsletter and stored in MongoDB
+  Both should be persistent, validated (email format, required fields), and idempotent for newsletter (same email should not create duplicates).
+
+backend:
+  - task: "POST /api/contact - Contact form submission"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        -working: "NA"
+        -agent: "main"
+        -comment: "Created ContactCreate model with name/email/phone/message validation, persists to db.contacts collection with UUID id and ISO timestamp. Also added GET /api/contact for listing."
+        -working: true
+        -agent: "testing"
+        -comment: "✅ ALL TESTS PASSED (6/6). Verified: (1) Valid submission with all fields returns 201 with id, name, email, phone, message, created_at in ISO format; (2) Valid submission without phone (optional) returns 201 with phone=null; (3) Missing name returns 422; (4) Invalid email format returns 422; (5) Empty message returns 422; (6) GET /api/contact returns list sorted by most recent first, no _id exposed. MongoDB storage confirmed."
+  - task: "POST /api/newsletter - Newsletter subscription"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        -working: "NA"
+        -agent: "main"
+        -comment: "Created SubscribeCreate with EmailStr validation, lowercased email uniqueness check, idempotent (returns existing on duplicate). Also GET /api/newsletter for listing."
+        -working: true
+        -agent: "testing"
+        -comment: "✅ ALL TESTS PASSED (5/5). Verified: (1) Valid subscription returns 201 with id, lowercased email, subscribed_at; (2) IDEMPOTENCY CONFIRMED - duplicate email returns same id and timestamp (no duplicate created); (3) Invalid email format returns 422; (4) Missing email returns 422; (5) GET /api/newsletter returns list with no _id exposed. MongoDB storage confirmed."
+
+frontend:
+  - task: "Contact form wired to /api/contact"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/components/Contact.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        -working: "NA"
+        -agent: "main"
+        -comment: "Replaced localStorage stub with axios POST to REACT_APP_BACKEND_URL + /api/contact, loading spinner + success/error toast."
+  - task: "Newsletter form wired to /api/newsletter"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/components/Footer.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        -working: "NA"
+        -agent: "main"
+        -comment: "Footer subscribe form now calls /api/newsletter with axios, shows loading/done state + toast."
+
+metadata:
+  created_by: "main_agent"
+  version: "1.2"
+  test_sequence: 2
+  run_ui: false
+
+test_plan:
+  current_focus: []
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+    -agent: "main"
+    -comment: "Please test the two new endpoints: POST /api/contact (fields: name, email, phone optional, message; must validate email + reject empty required) and POST /api/newsletter (email; must be idempotent for duplicate emails). Also GET listing endpoints. Use REACT_APP_BACKEND_URL from /app/frontend/.env with /api prefix."
+    -agent: "testing"
+    -comment: "✅ BACKEND TESTING COMPLETE - ALL TESTS PASSED (11/11). Both endpoints working perfectly: POST /api/contact validates all fields correctly (name, email, message required; phone optional), returns proper 201/422 responses, stores in MongoDB contacts collection. POST /api/newsletter is fully idempotent (duplicate emails return same id/timestamp), validates email format, stores in subscribers collection. Both GET endpoints return sorted lists without exposing MongoDB _id. No issues found."

@@ -1,26 +1,44 @@
 import React, { useState } from 'react';
-import { MapPin, Mail, Phone, Send, Check } from 'lucide-react';
+import axios from 'axios';
+import { MapPin, Mail, Phone, Send, Check, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { contact } from '../data/mock';
+
+const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       toast.error('Please fill in your name, email, and message.');
       return;
     }
-    // Save to localStorage as "pending inquiry"
-    const stored = JSON.parse(localStorage.getItem('inquiries') || '[]');
-    stored.push({ ...form, at: new Date().toISOString() });
-    localStorage.setItem('inquiries', JSON.stringify(stored));
-    setSent(true);
-    toast.success('Pranaam! Your message has been received. We shall respond soon.');
-    setForm({ name: '', email: '', phone: '', message: '' });
-    setTimeout(() => setSent(false), 3500);
+    try {
+      setLoading(true);
+      await axios.post(`${API}/contact`, {
+        name: form.name.trim(),
+        email: form.email.trim(),
+        phone: form.phone.trim() || null,
+        message: form.message.trim(),
+      });
+      setSent(true);
+      toast.success('Pranaam! Your message has reached us. We shall respond soon.');
+      setForm({ name: '', email: '', phone: '', message: '' });
+      setTimeout(() => setSent(false), 3500);
+    } catch (err) {
+      const detail = err?.response?.data?.detail;
+      toast.error(
+        typeof detail === 'string'
+          ? detail
+          : 'Sorry — we could not send your message. Please try again.'
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -154,10 +172,14 @@ const Contact = () => {
 
               <button
                 type="submit"
-                disabled={sent}
-                className="mt-6 w-full inline-flex items-center justify-center gap-3 rounded-xl bg-[#8b1a1a] hover:bg-[#6b1414] disabled:bg-[#4a7c2e] text-[#fef6e4] py-4 font-semibold shadow-md hover:shadow-xl transition-all"
+                disabled={sent || loading}
+                className="mt-6 w-full inline-flex items-center justify-center gap-3 rounded-xl bg-[#8b1a1a] hover:bg-[#6b1414] disabled:bg-[#4a7c2e] text-[#fef6e4] py-4 font-semibold shadow-md hover:shadow-xl transition-all disabled:cursor-not-allowed"
               >
-                {sent ? (
+                {loading ? (
+                  <>
+                    <Loader2 size={18} className="animate-spin" /> Sending . . .
+                  </>
+                ) : sent ? (
                   <>
                     <Check size={18} /> Message sent — Pranaam!
                   </>

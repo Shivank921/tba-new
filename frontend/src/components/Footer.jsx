@@ -1,8 +1,36 @@
-import React from 'react';
-import { ArrowUp, Heart } from 'lucide-react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { ArrowUp, Heart, Loader2, Check } from 'lucide-react';
+import { toast } from 'sonner';
 import { navLinks } from '../data/mock';
 
+const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+
 const Footer = () => {
+  const [subLoading, setSubLoading] = useState(false);
+  const [subDone, setSubDone] = useState(false);
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value.trim();
+    if (!email) return;
+    try {
+      setSubLoading(true);
+      await axios.post(`${API}/newsletter`, { email });
+      setSubDone(true);
+      toast.success('Subscribed — welcome to the family!');
+      e.target.reset();
+      setTimeout(() => setSubDone(false), 3500);
+    } catch (err) {
+      const detail = err?.response?.data?.detail;
+      toast.error(
+        typeof detail === 'string' ? detail : 'Could not subscribe. Please try again.'
+      );
+    } finally {
+      setSubLoading(false);
+    }
+  };
+
   return (
     <footer className="relative bg-[#1a0f0a] text-[#fef6e4] pt-20 pb-8 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-8 alpana-border opacity-40" />
@@ -59,16 +87,7 @@ const Footer = () => {
               Receive festival updates, event invitations and cultural stories.
             </p>
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                const email = e.target.email.value;
-                if (email) {
-                  const list = JSON.parse(localStorage.getItem('newsletter') || '[]');
-                  list.push(email);
-                  localStorage.setItem('newsletter', JSON.stringify(list));
-                  e.target.reset();
-                }
-              }}
+              onSubmit={handleSubscribe}
               className="flex items-center gap-2"
             >
               <input
@@ -78,8 +97,18 @@ const Footer = () => {
                 placeholder="your@email.com"
                 className="flex-1 rounded-full bg-[#fef6e4]/10 border border-[#c8862a]/30 px-4 py-2.5 text-sm text-[#fef6e4] placeholder-[#fef6e4]/40 focus:outline-none focus:border-[#c8862a]"
               />
-              <button className="rounded-full bg-[#c8862a] hover:bg-[#b8762a] text-[#1a0f0a] px-5 py-2.5 text-sm font-semibold transition-colors">
-                Join
+              <button
+                type="submit"
+                disabled={subLoading || subDone}
+                className="rounded-full bg-[#c8862a] hover:bg-[#b8762a] disabled:opacity-70 text-[#1a0f0a] px-5 py-2.5 text-sm font-semibold transition-colors inline-flex items-center gap-1.5"
+              >
+                {subLoading ? (
+                  <><Loader2 size={14} className="animate-spin" /> ...</>
+                ) : subDone ? (
+                  <><Check size={14} /> Done</>
+                ) : (
+                  'Join'
+                )}
               </button>
             </form>
           </div>
