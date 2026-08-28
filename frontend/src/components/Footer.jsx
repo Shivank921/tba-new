@@ -3,12 +3,15 @@ import axios from 'axios';
 import { ArrowUp, Heart, Loader2, Check } from 'lucide-react';
 import { toast } from 'sonner';
 import { navLinks } from '../data/mock';
+import { Link, useLocation } from 'react-router-dom';
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const Footer = () => {
   const [subLoading, setSubLoading] = useState(false);
   const [subDone, setSubDone] = useState(false);
+  const location = useLocation();
+  const pageHref = (href) => (location.pathname === '/' ? href : `/${href}`);
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
@@ -32,7 +35,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-[#1a0f0a] text-[#fef6e4] pt-20 pb-8 overflow-hidden">
+    <footer className="relative bg-[#1a0f0a] text-[#fef6e4] pt-20 pb-8 overflow-hidden" data-testid="site-footer">
       <div className="absolute top-0 left-0 right-0 h-8 alpana-border opacity-40" />
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-[#8b1a1a] blur-[120px]" />
@@ -69,13 +72,23 @@ const Footer = () => {
               {navLinks.map((l) => (
                 <li key={l.href}>
                   <a
-                    href={l.href}
+                    href={pageHref(l.href)}
                     className="text-sm text-[#fef6e4]/70 hover:text-[#f5c76a] transition-colors"
+                    data-testid={`footer-nav-${l.label.toLowerCase()}-link`}
                   >
                     {l.label}
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/donate"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#f5c76a] transition-colors hover:text-white"
+                  data-testid="footer-donate-link"
+                >
+                  <Heart size={13} aria-hidden="true" /> Donate
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -89,6 +102,7 @@ const Footer = () => {
             <form
               onSubmit={handleSubscribe}
               className="flex items-center gap-2"
+              data-testid="footer-newsletter-form"
             >
               <input
                 name="email"
@@ -96,11 +110,13 @@ const Footer = () => {
                 required
                 placeholder="your@email.com"
                 className="flex-1 rounded-full bg-[#fef6e4]/10 border border-[#c8862a]/30 px-4 py-2.5 text-sm text-[#fef6e4] placeholder-[#fef6e4]/40 focus:outline-none focus:border-[#c8862a]"
+                data-testid="footer-newsletter-email-input"
               />
               <button
                 type="submit"
                 disabled={subLoading || subDone}
                 className="rounded-full bg-[#c8862a] hover:bg-[#b8762a] disabled:opacity-70 text-[#1a0f0a] px-5 py-2.5 text-sm font-semibold transition-colors inline-flex items-center gap-1.5"
+                data-testid="footer-newsletter-submit-button"
               >
                 {subLoading ? (
                   <><Loader2 size={14} className="animate-spin" /> ...</>
@@ -121,6 +137,7 @@ const Footer = () => {
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] color-gold font-bold hover:text-[#f5c76a] transition-colors"
+            data-testid="footer-back-to-top-button"
           >
             Back to Top <ArrowUp size={14} />
           </button>

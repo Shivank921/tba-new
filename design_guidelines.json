@@ -1,0 +1,86 @@
+{
+  "theme": "light",
+  "app_type": "community_association_website",
+  "typography": {
+    "headings": "Playfair Display, serif",
+    "subheadings": "Cormorant Garamond, serif",
+    "body": "Inter, sans-serif",
+    "instructions": {
+      "H1": "text-4xl md:text-5xl lg:text-6xl tracking-tight font-display text-crimson-gradient font-bold text-center",
+      "H2": "text-xl md:text-2xl font-serif-2 color-gold text-center mb-6",
+      "body": "text-base md:text-lg leading-relaxed text-[#2a1810] text-center",
+      "upi_text": "text-lg md:text-xl font-medium tracking-wide font-sans text-center text-[#2a1810]",
+      "payee_name": "text-2xl md:text-3xl font-display font-semibold text-center mb-2"
+    }
+  },
+  "colors": {
+    "background": "#faf6ef (cream)",
+    "card": "rgba(255, 251, 240, 0.7)",
+    "primary": "#8b1a1a (crimson)",
+    "secondary": "#c8862a (gold)",
+    "accent": "#e08a1e (saffron)",
+    "text": "#2a1810"
+  },
+  "visual_enhancers": {
+    "borders": "border-gold/20 (rgba(200, 134, 42, 0.2))",
+    "background_patterns": "Use existing `.alpana-border` and `.paisley-bg` on the main container.",
+    "shadows": "Use `.diya-glow` sparingly for hover effects on buttons or the QR container.",
+    "glassmorphism": "Use the existing `.glass` utility class for the main donation card."
+  },
+  "layouts": {
+    "donation_page": {
+      "container": "min-h-screen pt-32 pb-20 px-4 md:px-8 flex flex-col items-center justify-center relative overflow-hidden bg-cream paisley-bg",
+      "card": "max-w-xl w-full glass rounded-3xl p-8 md:p-12 flex flex-col items-center gap-8 relative z-10 animate-fadeUp mx-auto border border-[rgba(200,134,42,0.2)]",
+      "qr_container": "w-full max-w-sm aspect-square bg-white rounded-2xl p-6 shadow-[0_8px_32px_rgba(139,26,26,0.1)] border border-[#e5d9c5] flex flex-col items-center justify-center hover:diya-glow transition-all duration-300",
+      "qr_image": "w-full h-full object-contain max-h-[400px]",
+      "upi_section": "w-full flex flex-col gap-4 items-center bg-white/50 p-6 md:p-8 rounded-2xl border border-gold/20",
+      "upi_row": "flex flex-wrap items-center justify-center gap-3 w-full"
+    }
+  },
+  "motion": {
+    "page_entrance": "Use existing `animate-fadeUp` and `animate-fadeIn`.",
+    "hover_effects": "Buttons should have a slight translateY(-2px) and scale(1.02) with smooth transition.",
+    "copy_feedback": "Use sonner toast for success feedback when UPI ID is copied."
+  },
+  "accessibility": {
+    "contrast": "Text must meet WCAG AA contrast over glass cards. Use text-[#2a1810] for readability.",
+    "alt_text": "QR code MUST have descriptive alt text 'Bengali Association Donation QR Code'.",
+    "aria_labels": "Add aria-label='Copy UPI ID' to the copy button.",
+    "focus_states": "Visible focus ring (focus:ring-2 focus:ring-crimson) for interactive elements."
+  },
+  "media": {
+    "image_urls": {
+      "qr_code": {
+        "url": "https://customer-assets-m6fa6gv7.emergentagent.net/job_assoc-cultural/artifacts/x5xpmjte_tba%20qr.jpeg",
+        "description": "The Bengali Association Donation QR Code",
+        "category": "donation_page"
+      }
+    }
+  },
+  "instructions_to_main_agent": [
+    "Create a new page component `Donate.jsx` in `/app/frontend/src/pages/`.",
+    "Add the route `/donate` in `App.js`.",
+    "Update `Navbar.jsx` (and any mobile nav) to include a prominent 'Donate' link that points to `/donate`. Use a distinct styling like `.bg-crimson` and `.text-white` rounded pill to make it prominent.",
+    "In `Donate.jsx`, implement a clean, centered layout using the existing `.glass` and `.paisley-bg` utilities.",
+    "Display the provided QR code (from media.image_urls) prominently in a well-spaced card.",
+    "Below the QR code, display the Payee Name: 'The Bengali Association', UPI ID: 'thebengali2002@kotak', and UPI Number: '9894280001'.",
+    "Implement a 'Copy' button next to the UPI ID. Use the `lucide-react` Copy icon (e.g., `<Copy size={18} />`).",
+    "When the user clicks the Copy button, copy 'thebengali2002@kotak' to clipboard (`navigator.clipboard.writeText`) and trigger a success toast using `sonner` (`toast.success('UPI ID copied to clipboard!')`).",
+    "Do NOT add any payment reference submission form or input fields. Keep the flow simple and direct.",
+    "Ensure all interactive elements have `data-testid` attributes (e.g., `data-testid=\"copy-upi-btn\"`).",
+    "Ensure the page is responsive and fully contained within viewport on load without feeling cramped."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Do not converge toward generic AI outputs. Avoid uniform styling.",
+    "Create depth with layered design elements and z-index hierarchy.",
+    "Use glass-morphism effects (e.g., `.glass` with 12px blur).",
+    "Never apply universal transitions (`transition: all`). Target specific properties.",
+    "Do not center-align the main app container globally (`.App { text-align: center; }` is forbidden).",
+    "Use modern button styles (pill-shaped or sharp with interaction animations and correct brand colors).",
+    "Never use emoji characters for icons. Use `lucide-react`.",
+    "Every interaction needs micro-animations (hover states, focus states).",
+    "Use generous spacing (2-3x more than comfortable, e.g., p-8, p-12).",
+    "Use `sonner` for toasts.",
+    "Always apply `data-testid` to interactive and key informational elements."
+  ]
+}

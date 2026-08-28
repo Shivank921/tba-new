@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Admin from './pages/Admin';
 import AdminLogin from './pages/AdminLogin';
+import Donate from './pages/Donate';
 import { AuthProvider } from './context/AuthContext';
 import { Toaster } from './components/ui/sonner';
 
@@ -14,6 +15,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/donate" element={<Donate />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<Admin />} />
           </Routes>
