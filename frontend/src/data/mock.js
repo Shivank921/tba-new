@@ -206,7 +206,7 @@ export const pillars = [
     description: 'We are committed to preserving, promoting and spreading awareness of Bengali culture and heritage. A special focus is placed on the younger generation — encouraging them to understand their roots and carry forward the language, traditions, values and cultural heritage of Bengal.',
     quote: 'A culture lives when its children remember it.',
     icon: 'Sparkles',
-    image: 'https://images.unsplash.com/photo-1585302397841-b42e837d0d81?w=900&q=80',
+    image: '/cultural-sangeet.jpeg',
   },
   {
     id: 4,
