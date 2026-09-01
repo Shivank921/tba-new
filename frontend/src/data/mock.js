@@ -186,7 +186,7 @@ export const pillars = [
     description: 'Durga Puja is the most cherished and eagerly awaited celebration of the Bengali Association, Coimbatore. Members and families come together with devotion, enthusiasm, and the traditional spirit of Bengal — through Maha Shashti, Saptami, Ashtami, Navami and Bijoya Dashami, with pujas, cultural programmes, devotional music, dance and community feasts.',
     quote: 'Pujo means togetherness — celebrating Maa Durga, celebrating Bengal, and celebrating our community.',
     icon: 'Flame',
-    image: 'https://images.unsplash.com/photo-1616074385287-67f6fb9e9eb8?w=900&q=80',
+    image: '/community-feast.jpeg',
   },
   {
     id: 2,
