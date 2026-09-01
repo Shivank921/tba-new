@@ -47,7 +47,9 @@ const About = () => {
               About Us
             </div>
             <h2 className="font-display text-4xl md:text-6xl font-bold text-[#2a1810] leading-[1.05] mb-6">
-              Where <span className="italic text-crimson-gradient">Bengal</span> lives on, in the heart of the <span className="italic text-crimson-gradient">south.</span>
+              A Little bit of <span className="italic text-crimson-gradient">Bengal</span>
+              <br />
+              In the heart of the <span className="italic text-crimson-gradient">South.</span>
             </h2>
             <div className="space-y-4 text-[#2a1810]/75 leading-relaxed font-serif-2 text-lg">
               <p>
