@@ -22,7 +22,7 @@ export const heroSlides = [
   {
     id: 3,
     image: 'https://images.unsplash.com/photo-1645264090488-a019de493023?w=1920&q=80',
-    kicker: 'আমাদের গর্ব',
+    kicker: 'Our Pride',
     title: 'বাংলার মাটি,',
     accent: 'বাংলার সংস্কৃতি',
     subtitle: 'Amader Garba — the soil of Bengal, the culture of Bengal, our pride. Carried forward with love in Coimbatore.',
