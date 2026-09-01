@@ -196,7 +196,7 @@ export const pillars = [
     description: 'Beyond cultural activities, the Association believes in community, compassion and mutual support. Through Blood Donation Camps, Free Eye Checkup camps, Health Checkup drives and Annadanam, we promote social responsibility, volunteerism and collective welfare — supporting one another during times of need.',
     quote: 'Service is the truest form of prayer.',
     icon: 'HeartHandshake',
-    image: 'https://images.unsplash.com/photo-1774437563786-d40a1087f31e?w=900&q=80',
+    image: '/community-feast.jpeg',
   },
   {
     id: 3,
