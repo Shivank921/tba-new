@@ -30,7 +30,7 @@ export const heroSlides = [
   },
   {
     id: 4,
-    image: 'https://images.unsplash.com/photo-1774437563786-d40a1087f31e?w=1920&q=80',
+    image: '/community-group.webp',
     kicker: 'Join The Family',
     title: 'Become a',
     accent: 'Member',
