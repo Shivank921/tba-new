@@ -22,6 +22,7 @@ Modernize and upgrade the Bengali Association Coimbatore website with a visually
 - Cinematic homepage, responsive navigation, countdown, association overview, four pillars, 2026 Durga Puja schedule, categorized gallery, committee, contact form, and newsletter.
 - User-supplied content replaces the initial placeholders.
 - Duplicate heritage/four-pillars section removed.
+- Third hero banner heading localized to `বাংলার মাটি, বাংলার সংস্কৃতি` with Bengali typography on 2026-08-28.
 
 ### Backend and Admin
 - Contact and newsletter submissions persist in MongoDB.
@@ -40,6 +41,7 @@ Modernize and upgrade the Bengali Association Coimbatore website with a visually
 - Frontend production build: passed on 2026-08-28.
 - Donation page automated frontend suite: core flow passed; one mobile contrast issue was identified and corrected.
 - Post-fix mobile verification: passed at 375px with no horizontal overflow; QR, payment details, and clipboard fallback work.
+- Third hero banner Bengali heading: production build and live visual verification passed on 2026-08-28.
 - Existing backend suite: 26/26 tests passed before this feature; donation work did not change backend behavior.
 
 ## Prioritized Roadmap

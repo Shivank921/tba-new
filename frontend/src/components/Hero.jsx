@@ -49,7 +49,10 @@ const Hero = () => {
 
           <h1
             key={slide.id + '-title'}
-            className="animate-fadeUp delay-100 font-display text-5xl md:text-7xl lg:text-8xl leading-[1.05] text-[#fef6e4] font-bold mb-4"
+            className={`animate-fadeUp delay-100 text-5xl md:text-7xl lg:text-8xl leading-[1.05] text-[#fef6e4] font-bold mb-4 ${
+              slide.id === 3 ? 'font-bangla' : 'font-display'
+            }`}
+            data-testid="hero-slide-heading"
           >
             {slide.title}
             <br />
