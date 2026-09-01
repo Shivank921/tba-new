@@ -25,7 +25,7 @@ export const heroSlides = [
     kicker: 'Our Pride',
     title: 'বাংলার মাটি,',
     accent: 'বাংলার সংস্কৃতি',
-    subtitle: 'Amader Garba — the soil of Bengal, the culture of Bengal, our pride. Carried forward with love in Coimbatore.',
+    subtitle: 'আমাদের গরবা — the soil of Bengal, the culture of Bengal, our pride. Carried forward with love in Coimbatore.',
     cta: { label: 'Discover Our Heritage', href: '#heritage' },
   },
   {
