@@ -69,7 +69,7 @@ const Committee = () => {
             <div className="space-y-6">
               {/* Founder — top row alone */}
               <div className="grid md:grid-cols-3">
-                <div className="md:col-start-2">{Card(founder, true)}</div>
+                <div>{Card(founder, true)}</div>
               </div>
 
               {/* Current stewards */}
