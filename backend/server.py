@@ -124,8 +124,8 @@ async def get_status_checks():
 # ============================================================
 class ContactCreate(BaseModel):
     name: str = Field(..., min_length=2, max_length=120)
-    email: EmailStr
-    phone: Optional[str] = Field(default=None, max_length=40)
+    email: Optional[EmailStr] = None
+    phone: str = Field(..., min_length=5, max_length=40)
     message: str = Field(..., min_length=5, max_length=4000)
 
 
@@ -134,8 +134,8 @@ class Contact(BaseModel):
 
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     name: str
-    email: EmailStr
-    phone: Optional[str] = None
+    email: Optional[EmailStr] = None
+    phone: str
     message: str
     handled: bool = False
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
@@ -147,7 +147,7 @@ async def create_contact(payload: ContactCreate):
     doc = obj.model_dump()
     doc['created_at'] = doc['created_at'].isoformat()
     await db.contacts.insert_one(doc)
-    logger.info("New contact inquiry from %s <%s>", obj.name, obj.email)
+    logger.info("New contact inquiry from %s <%s>", obj.name, obj.phone)
     return obj
 
 

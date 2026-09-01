@@ -86,7 +86,7 @@ const Admin = () => {
       items = items.filter(
         (i) =>
           i.name.toLowerCase().includes(s) ||
-          i.email.toLowerCase().includes(s) ||
+          (i.email || '').toLowerCase().includes(s) ||
           (i.phone || '').toLowerCase().includes(s) ||
           i.message.toLowerCase().includes(s)
       );
@@ -340,18 +340,20 @@ const Admin = () => {
                       {item.name}
                     </div>
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-[#2a1810]/70 mb-3">
-                      <button
-                        onClick={() => copyEmail(item.email)}
-                        className="inline-flex items-center gap-1.5 hover:color-crimson transition-colors"
-                        title="Copy email"
-                      >
-                        <Mail size={13} /> {item.email}
-                        <Copy size={11} className="opacity-50" />
-                      </button>
                       {item.phone && (
                         <span className="inline-flex items-center gap-1.5">
                           <Phone size={13} /> {item.phone}
                         </span>
+                      )}
+                      {item.email && (
+                        <button
+                          onClick={() => copyEmail(item.email)}
+                          className="inline-flex items-center gap-1.5 hover:color-crimson transition-colors"
+                          title="Copy email"
+                        >
+                          <Mail size={13} /> {item.email}
+                          <Copy size={11} className="opacity-50" />
+                        </button>
                       )}
                     </div>
                     <p className="font-serif-2 text-[#2a1810]/85 leading-relaxed break-words whitespace-pre-wrap">
@@ -383,12 +385,14 @@ const Admin = () => {
                         </>
                       )}
                     </button>
-                    <a
-                      href={`mailto:${item.email}?subject=Re:%20Your%20inquiry%20-%20Bengali%20Association%20Coimbatore`}
-                      className="inline-flex items-center gap-2 rounded-full border border-[#8b1a1a]/30 px-4 py-2 text-sm font-semibold text-[#8b1a1a] hover:bg-[#8b1a1a] hover:text-[#fef6e4] transition-colors"
-                    >
-                      <Mail size={14} /> Reply
-                    </a>
+                    {item.email && (
+                      <a
+                        href={`mailto:${item.email}?subject=Re:%20Your%20inquiry%20-%20Bengali%20Association%20Coimbatore`}
+                        className="inline-flex items-center gap-2 rounded-full border border-[#8b1a1a]/30 px-4 py-2 text-sm font-semibold text-[#8b1a1a] hover:bg-[#8b1a1a] hover:text-[#fef6e4] transition-colors"
+                      >
+                        <Mail size={14} /> Reply
+                      </a>
+                    )}
                   </div>
                 </div>
               </article>

@@ -13,16 +13,16 @@ const Contact = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      toast.error('Please fill in your name, email, and message.');
+    if (!form.name || !form.phone || !form.message) {
+      toast.error('Please fill in your name, phone, and message.');
       return;
     }
     try {
       setLoading(true);
       await axios.post(`${API}/contact`, {
         name: form.name.trim(),
-        email: form.email.trim(),
-        phone: form.phone.trim() || null,
+        email: form.email.trim() || null,
+        phone: form.phone.trim(),
         message: form.message.trim(),
       });
       setSent(true);
@@ -144,7 +144,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <label className="text-xs uppercase tracking-[0.2em] font-bold text-[#2a1810]/60 mb-2 block">
-                    Email
+                    Email (optional)
                   </label>
                   <input
                     type="email"
@@ -156,7 +156,7 @@ const Contact = () => {
                 </div>
                 <div className="md:col-span-2">
                   <label className="text-xs uppercase tracking-[0.2em] font-bold text-[#2a1810]/60 mb-2 block">
-                    Phone (optional)
+                    Phone
                   </label>
                   <input
                     value={form.phone}
