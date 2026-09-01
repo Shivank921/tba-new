@@ -168,12 +168,10 @@ export const luminaries = [
 ];
 
 export const committee = [
+  { name: 'Mr. Anutosh Guha, IFS', role: 'Founding & Ex-President', tenure: '2002' },
   { name: 'Mr. Ayan Chatterjee', role: 'President', tenure: 'Current' },
+  { name: 'Mr. Biswajit Paul', role: 'Vice President', tenure: 'Current' },
   { name: 'Mr. Sankar Samanta', role: 'Secretary', tenure: 'Current' },
-  { name: 'Mr. Anutosh Guha, IFS', role: 'Founding President', tenure: '2002' },
-  { name: 'Mr. Subrata Barik', role: 'Ex-President', tenure: 'Emeritus' },
-  { name: 'Mr. Swaroop Kr. Chattopadhyay', role: 'Ex-Secretary', tenure: 'Emeritus' },
-  { name: 'Mr. Purushottam Purohit', role: 'Senior Advisor', tenure: 'Guiding' },
 ];
 
 // The Four Pillars of The Bengali Association Coimbatore

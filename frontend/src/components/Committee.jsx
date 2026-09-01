@@ -18,53 +18,67 @@ const Committee = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {committee.map((m, idx) => {
-            const featured = idx < 2;
-            return (
+        {(() => {
+          const founder = committee[0];
+          const rest = committee.slice(1);
+          const Card = (m, featured) => (
+            <div
+              key={m.name}
+              className={`group relative rounded-3xl p-8 border transition-all hover:-translate-y-1 ${
+                featured
+                  ? 'bg-gradient-to-br from-[#2a1810] to-[#1a0f0a] text-[#fef6e4] border-[#c8862a]/40 shadow-xl'
+                  : 'bg-[#fef6e4] text-[#2a1810] border-[#c8862a]/25 hover:shadow-lg'
+              }`}
+              data-testid={`committee-card-${m.name.replace(/[^a-zA-Z]/g, '-').toLowerCase()}`}
+            >
+              {featured && (
+                <div className="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#c8862a] text-[#1a0f0a] flex items-center justify-center">
+                  <Crown size={14} />
+                </div>
+              )}
+
               <div
-                key={m.name}
-                className={`group relative rounded-3xl p-8 border transition-all hover:-translate-y-1 ${
+                className={`w-16 h-16 rounded-2xl flex items-center justify-center font-display text-2xl font-bold mb-5 ${
                   featured
-                    ? 'bg-gradient-to-br from-[#2a1810] to-[#1a0f0a] text-[#fef6e4] border-[#c8862a]/40 shadow-xl'
-                    : 'bg-[#fef6e4] text-[#2a1810] border-[#c8862a]/25 hover:shadow-lg'
+                    ? 'bg-[#c8862a] text-[#1a0f0a]'
+                    : 'bg-gradient-to-br from-[#8b1a1a] to-[#b8593a] text-[#fef6e4]'
                 }`}
               >
-                {featured && (
-                  <div className="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#c8862a] text-[#1a0f0a] flex items-center justify-center">
-                    <Crown size={14} />
-                  </div>
-                )}
-
-                <div
-                  className={`w-16 h-16 rounded-2xl flex items-center justify-center font-display text-2xl font-bold mb-5 ${
-                    featured
-                      ? 'bg-[#c8862a] text-[#1a0f0a]'
-                      : 'bg-gradient-to-br from-[#8b1a1a] to-[#b8593a] text-[#fef6e4]'
-                  }`}
-                >
-                  {m.name.split(' ').filter((s) => s !== 'Mr.' && s !== 'Mrs.')[0].charAt(0)}
-                </div>
-
-                <div
-                  className={`text-[10px] uppercase tracking-[0.3em] font-bold mb-2 ${
-                    featured ? 'text-[#f5c76a]' : 'color-gold'
-                  }`}
-                >
-                  {m.role}
-                </div>
-                <div className="font-display text-2xl font-bold leading-tight">{m.name}</div>
-                <div
-                  className={`text-xs mt-2 ${
-                    featured ? 'text-[#fef6e4]/60' : 'text-[#2a1810]/50'
-                  }`}
-                >
-                  {m.tenure}
-                </div>
+                {m.name.split(' ').filter((s) => s !== 'Mr.' && s !== 'Mrs.')[0].charAt(0)}
               </div>
-            );
-          })}
-        </div>
+
+              <div
+                className={`text-[10px] uppercase tracking-[0.3em] font-bold mb-2 ${
+                  featured ? 'text-[#f5c76a]' : 'color-gold'
+                }`}
+              >
+                {m.role}
+              </div>
+              <div className="font-display text-2xl font-bold leading-tight">{m.name}</div>
+              <div
+                className={`text-xs mt-2 ${
+                  featured ? 'text-[#fef6e4]/60' : 'text-[#2a1810]/50'
+                }`}
+              >
+                {m.tenure}
+              </div>
+            </div>
+          );
+
+          return (
+            <div className="space-y-6">
+              {/* Founder — top row alone */}
+              <div className="grid md:grid-cols-3">
+                <div className="md:col-start-2">{Card(founder, true)}</div>
+              </div>
+
+              {/* Current stewards */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {rest.map((m) => Card(m, false))}
+              </div>
+            </div>
+          );
+        })()}
 
         {/* Testimonials */}
         <div className="mt-24">
