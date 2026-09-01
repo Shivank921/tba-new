@@ -86,7 +86,13 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.3em] color-gold font-bold mb-1">Call</div>
-                  <div className="font-display text-lg font-semibold text-[#2a1810]">{contact.phone}</div>
+                  {contact.phones.map((p) => (
+                    <div key={p.number} className="mb-1">
+                      <span className="font-display text-lg font-semibold text-[#2a1810]">{p.name}</span>
+                      <span className="text-[#2a1810]/70"> : </span>
+                      <a href={`tel:${p.number}`} className="font-display text-lg font-semibold text-[#8b1a1a] hover:underline">{p.number}</a>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

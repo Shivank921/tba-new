@@ -289,10 +289,13 @@ export const testimonials = [
 ];
 
 export const contact = {
-  venue: 'SNV Kalyana Mandapam',
-  address: '#24, Ramar Koil Street, Ramnagar, Coimbatore – 641 009, Tamilnadu',
-  email: 'contact@bengaliassociationcoimbatore.com',
-  phone: '+91 98430 00000',
+  venue: 'The Bengali Association Coimbatore — Nakshtra Nivas',
+  address: 'No. 12 Periyar Nagar, Masakalipalayam, Coimbatore – 641015',
+  email: 'cbetba@gmail.com',
+  phones: [
+    { name: 'Mr. Ayan Chatterjee', number: '+91-9894280001' },
+    { name: 'Mr. Shankar Samanta', number: '+91-7667559217' },
+  ],
   socials: [
     { name: 'Facebook', href: '#' },
     { name: 'Instagram', href: '#' },
