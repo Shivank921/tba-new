@@ -26,7 +26,7 @@ export const heroSlides = [
     title: 'বাংলার মাটি,',
     accent: 'বাংলার সংস্কৃতি',
     subtitle: 'আমাদের গরবা — the soil of Bengal, the culture of Bengal, our pride. Carried forward with love in Coimbatore.',
-    cta: { label: 'Discover Our Heritage', href: '#heritage' },
+    cta: { label: 'Discover Our Heritage', href: '#pillars' },
   },
   {
     id: 4,
