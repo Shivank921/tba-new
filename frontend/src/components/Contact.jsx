@@ -104,6 +104,9 @@ const Contact = () => {
                   <a
                     key={s.name}
                     href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-testid={`social-${s.name.toLowerCase()}-link`}
                     className="px-4 py-2 rounded-full border border-[#8b1a1a]/30 text-sm font-medium text-[#2a1810] hover:bg-[#8b1a1a] hover:text-[#fef6e4] transition-colors"
                   >
                     {s.name}

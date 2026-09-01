@@ -297,9 +297,8 @@ export const contact = {
     { name: 'Mr. Shankar Samanta', number: '+91-7667559217' },
   ],
   socials: [
-    { name: 'Facebook', href: '#' },
-    { name: 'Instagram', href: '#' },
-    { name: 'YouTube', href: '#' },
+    { name: 'Facebook', href: 'https://www.facebook.com/tbacbe/' },
+    { name: 'Instagram', href: 'https://www.instagram.com/thebengaliassociation.cbe/' },
   ],
 };
 
