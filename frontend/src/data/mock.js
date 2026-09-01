@@ -216,7 +216,7 @@ export const pillars = [
     description: 'From Durga Puja and Saraswati Puja to Kali Puja, annual picnics and traditional Bengali festivities — our year is stitched together with joy, friendship and togetherness. These occasions showcase our talents and pass our traditions to the next generation.',
     quote: 'Every gathering is a small festival of belonging.',
     icon: 'Users',
-    image: 'https://images.unsplash.com/photo-1759738102510-ec524f666274?w=900&q=80',
+    image: '/events-football.webp',
   },
 ];
 
