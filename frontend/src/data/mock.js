@@ -238,7 +238,13 @@ export const galleryAlbums = [
     title: 'Programs',
     blurb: 'Cultural nights, music, dance & performances.',
     cover: '/cultural-sangeet.jpeg',
-    photos: [],
+    photos: [
+      '/gallery/programs/prog-1.webp',
+      '/gallery/programs/prog-2.webp',
+      '/gallery/programs/prog-3.jpg',
+      '/gallery/programs/prog-4.webp',
+      '/gallery/programs/prog-5.jpeg',
+    ],
   },
   {
     id: 'activities',
