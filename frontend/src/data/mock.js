@@ -264,7 +264,13 @@ export const galleryAlbums = [
     title: 'News & Media',
     blurb: 'Press coverage, features & recognitions.',
     cover: '/community-group.webp',
-    photos: [],
+    photos: [
+      '/gallery/news/news-1.jpg',
+      '/gallery/news/news-2.webp',
+      '/gallery/news/news-3.jpg',
+      '/gallery/news/news-4.webp',
+      '/gallery/news/news-5.jpg',
+    ],
   },
 ];
 
