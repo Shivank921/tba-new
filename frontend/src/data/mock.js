@@ -219,21 +219,35 @@ export const pillars = [
 ];
 
 // Gallery categories: Puja, Community Services, Events, Media and Recognitions
-export const galleryCategories = ['All', 'Puja', 'Community Services', 'Events', 'Media & Recognitions'];
-
-export const gallery = [
-  { id: 1, src: 'https://images.unsplash.com/photo-1616074385287-67f6fb9e9eb8?w=800&q=80', tag: 'Puja', title: 'Devi Darshan', span: 'row-span-2' },
-  { id: 2, src: 'https://images.unsplash.com/photo-1645264090488-a019de493023?w=800&q=80', tag: 'Events', title: 'Dhunuchi Nritya', span: '' },
-  { id: 3, src: 'https://images.unsplash.com/photo-1585302397841-b42e837d0d81?w=800&q=80', tag: 'Events', title: 'Cultural Night', span: '' },
-  { id: 4, src: 'https://images.unsplash.com/photo-1774437563786-d40a1087f31e?w=800&q=80', tag: 'Community Services', title: 'Annadanam Drive', span: 'row-span-2' },
-  { id: 5, src: 'https://images.unsplash.com/photo-1634066844026-40a34d6f36c0?w=800&q=80', tag: 'Puja', title: 'Maa Durga', span: '' },
-  { id: 6, src: 'https://images.unsplash.com/photo-1585607344893-43a4bd91169a?w=800&q=80', tag: 'Puja', title: 'Sandhi Puja', span: '' },
-  { id: 7, src: 'https://images.unsplash.com/photo-1759738102510-ec524f666274?w=800&q=80', tag: 'Events', title: 'Community Feast', span: '' },
-  { id: 8, src: 'https://images.unsplash.com/photo-1600867161364-67e000733952?w=800&q=80', tag: 'Media & Recognitions', title: 'In the Press', span: '' },
-  { id: 9, src: 'https://images.unsplash.com/photo-1617875216004-78f15839c578?w=800&q=80', tag: 'Puja', title: 'Pandal View', span: '' },
-  { id: 10, src: 'https://images.unsplash.com/photo-1468234847176-28606331216a?w=800&q=80', tag: 'Community Services', title: 'Health Camp', span: '' },
-  { id: 11, src: 'https://images.unsplash.com/photo-1605292356183-a77d0a9c9d1d?w=800&q=80', tag: 'Media & Recognitions', title: 'Award Ceremony', span: '' },
-  { id: 12, src: 'https://images.unsplash.com/photo-1771507057886-defc3e54aa8c?w=800&q=80', tag: 'Events', title: 'Saraswati Puja', span: '' },
+export const galleryAlbums = [
+  {
+    id: 'puja',
+    title: 'Puja',
+    blurb: 'Durga Puja, Saraswati Puja & sacred rituals.',
+    cover: '/durga-puja-dhunuchi.webp',
+    photos: [],
+  },
+  {
+    id: 'programs',
+    title: 'Programs',
+    blurb: 'Cultural nights, music, dance & performances.',
+    cover: '/cultural-sangeet.jpeg',
+    photos: [],
+  },
+  {
+    id: 'activities',
+    title: 'Activities',
+    blurb: 'Community service, sports & get-togethers.',
+    cover: '/events-football.webp',
+    photos: [],
+  },
+  {
+    id: 'news-media',
+    title: 'News & Media',
+    blurb: 'Press coverage, features & recognitions.',
+    cover: '/community-group.webp',
+    photos: [],
+  },
 ];
 
 export const heritageCards = [

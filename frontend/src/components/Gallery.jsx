@@ -1,93 +1,130 @@
-import React, { useState, useMemo } from 'react';
-import { gallery, galleryCategories } from '../data/mock';
+import React, { useState } from 'react';
+import { X, ImageIcon, ArrowLeft } from 'lucide-react';
+import { galleryAlbums } from '../data/mock';
 
 const Gallery = () => {
-  const [cat, setCat] = useState('All');
+  const [openId, setOpenId] = useState(null);
+  const [lightbox, setLightbox] = useState(null);
 
-  const items = useMemo(
-    () => (cat === 'All' ? gallery : gallery.filter((g) => g.tag === cat)),
-    [cat]
-  );
+  const album = galleryAlbums.find((a) => a.id === openId);
 
   return (
     <section id="gallery" className="relative py-28 bg-[#fef6e4] overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
-          <div className="max-w-2xl">
-            <div className="text-[11px] uppercase tracking-[0.4em] color-gold font-bold mb-4">
-              Moments
-            </div>
-            <h2 className="font-display text-4xl md:text-6xl font-bold text-[#2a1810] leading-tight">
-              Frames of <span className="italic text-crimson-gradient">Devotion</span>
-            </h2>
-            <p className="font-serif-2 text-lg text-[#2a1810]/65 mt-4">
-              Glimpses from our celebrations — the dhaak, the alpana, the joy.
-            </p>
+        <div className="max-w-2xl mb-12">
+          <div className="text-[11px] uppercase tracking-[0.4em] color-gold font-bold mb-4">
+            Moments
           </div>
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 text-sm font-semibold color-crimson link-under"
-          >
-            View Full Archive →
-          </a>
+          <h2 className="font-display text-4xl md:text-6xl font-bold text-[#2a1810] leading-tight">
+            Frames of <span className="italic text-crimson-gradient">Devotion</span>
+          </h2>
+          <p className="font-serif-2 text-lg text-[#2a1810]/65 mt-4">
+            Glimpses from our celebrations — the dhaak, the alpana, the joy.
+          </p>
         </div>
 
-        {/* Category filter */}
-        <div className="flex flex-wrap items-center gap-2 mb-8">
-          {galleryCategories.map((c) => {
-            const isActive = cat === c;
-            return (
-              <button
-                key={c}
-                onClick={() => setCat(c)}
-                className={`rounded-full px-5 py-2 text-sm font-semibold border-2 transition-all ${
-                  isActive
-                    ? 'bg-[#8b1a1a] border-[#8b1a1a] text-[#fef6e4] shadow-md'
-                    : 'bg-transparent border-[#c8862a]/40 text-[#2a1810] hover:border-[#8b1a1a] hover:text-[#8b1a1a]'
-                }`}
-              >
-                {c}
-              </button>
-            );
-          })}
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-4">
-          {items.map((g) => (
-            <div
-              key={g.id}
-              className={`group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all cursor-pointer ${g.span}`}
+        {/* Album preview cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {galleryAlbums.map((a) => (
+            <button
+              key={a.id}
+              onClick={() => setOpenId(a.id)}
+              data-testid={`gallery-album-${a.id}`}
+              className="group relative text-left rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all h-[340px]"
             >
               <img
-                src={g.src}
-                alt={g.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1200ms] ease-out"
+                src={a.cover}
+                alt={a.title}
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1a0f0a]/85 via-transparent to-transparent opacity-70 group-hover:opacity-95 transition-opacity" />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <div className="text-[10px] uppercase tracking-[0.3em] color-gold font-bold">
-                  {g.tag}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1a0f0a]/90 via-[#1a0f0a]/25 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6 text-[#fef6e4]">
+                <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] color-gold font-bold mb-1">
+                  <ImageIcon size={12} /> {a.photos.length} Photos
                 </div>
-                <div className="font-display text-lg text-[#fef6e4] mt-0.5">
-                  {g.title}
-                </div>
-                <div className="text-[11px] text-[#fef6e4]/60 mt-1 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-                  View →
+                <div className="font-display text-2xl font-bold">{a.title}</div>
+                <div className="text-sm text-[#fef6e4]/75 mt-1">{a.blurb}</div>
+                <div className="text-[11px] font-semibold text-[#f5c76a] mt-3 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
+                  Open Album →
                 </div>
               </div>
-              <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#fef6e4]/20 backdrop-blur border border-[#fef6e4]/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-[#fef6e4] text-lg">
-                +
-              </div>
-            </div>
+            </button>
           ))}
         </div>
-
-        {items.length === 0 && (
-          <div className="text-center py-20 text-[#2a1810]/50 font-serif-2 text-lg italic">
-            No moments in this category yet — check back soon.
-          </div>
-        )}
       </div>
+
+      {/* Album modal */}
+      {album && (
+        <div
+          className="fixed inset-0 z-[60] bg-[#1a0f0a]/80 backdrop-blur-sm flex items-start md:items-center justify-center p-4 md:p-8 overflow-y-auto"
+          onClick={() => setOpenId(null)}
+        >
+          <div
+            className="relative bg-[#fef6e4] rounded-3xl w-full max-w-5xl my-auto p-6 md:p-10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <div className="text-[10px] uppercase tracking-[0.3em] color-gold font-bold mb-1">
+                  Album
+                </div>
+                <h3 className="font-display text-3xl font-bold text-[#2a1810]">{album.title}</h3>
+              </div>
+              <button
+                onClick={() => setOpenId(null)}
+                data-testid="gallery-modal-close"
+                className="w-10 h-10 rounded-full bg-[#8b1a1a] text-[#fef6e4] flex items-center justify-center hover:bg-[#6f1414] transition-colors"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            {album.photos.length === 0 ? (
+              <div className="text-center py-20 text-[#2a1810]/50 font-serif-2 text-lg italic">
+                Photos coming soon — check back shortly.
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {album.photos.map((src, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setLightbox(src)}
+                    className="group relative rounded-2xl overflow-hidden aspect-square shadow-sm hover:shadow-xl transition-all"
+                  >
+                    <img
+                      src={src}
+                      alt={`${album.title} ${i + 1}`}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-[#1a0f0a]/0 group-hover:bg-[#1a0f0a]/20 transition-colors" />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Fullscreen lightbox */}
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-[70] bg-[#1a0f0a]/95 flex items-center justify-center p-4"
+          onClick={() => setLightbox(null)}
+        >
+          <button
+            onClick={() => setLightbox(null)}
+            className="absolute top-6 left-6 inline-flex items-center gap-2 text-[#fef6e4] text-sm font-semibold"
+          >
+            <ArrowLeft size={16} /> Back
+          </button>
+          <img
+            src={lightbox}
+            alt="View"
+            className="max-h-[88vh] max-w-full rounded-2xl object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </section>
   );
 };
