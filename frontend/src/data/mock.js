@@ -225,7 +225,13 @@ export const galleryAlbums = [
     title: 'Puja',
     blurb: 'Durga Puja, Saraswati Puja & sacred rituals.',
     cover: '/durga-puja-dhunuchi.webp',
-    photos: [],
+    photos: [
+      '/gallery/puja/puja-1.jpeg',
+      '/gallery/puja/puja-2.jpeg',
+      '/gallery/puja/puja-3.jpeg',
+      '/gallery/puja/puja-4.jpeg',
+      '/gallery/puja/puja-5.jpeg',
+    ],
   },
   {
     id: 'programs',
