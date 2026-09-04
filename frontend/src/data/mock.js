@@ -251,7 +251,13 @@ export const galleryAlbums = [
     title: 'Activities',
     blurb: 'Community service, sports & get-togethers.',
     cover: '/events-football.webp',
-    photos: [],
+    photos: [
+      '/gallery/activities/act-1.jpeg',
+      '/gallery/activities/act-2.jpg',
+      '/gallery/activities/act-3.jpg',
+      '/gallery/activities/act-4.jpg',
+      '/gallery/activities/act-5.jpg',
+    ],
   },
   {
     id: 'news-media',
